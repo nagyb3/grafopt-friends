@@ -1,10 +1,8 @@
 package Friends.FriendsCli;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.StringTokenizer;
+import java.util.Scanner;
 
 // https://onlinejudge.org/external/106/10608.pdf
 class Main {
@@ -80,49 +78,34 @@ class Main {
     }
 
     public static void main(String[] args) throws Exception {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String line = br.readLine();
-        if (line == null || line.trim().isEmpty()) {
+        Scanner scanner = new Scanner(System.in);
+
+        if (!scanner.hasNextLine()) {
             return;
         }
 
-        int testCases = Integer.parseInt(line.trim());
-        StringBuilder out = new StringBuilder();
+        int numberOfTestCases = scanner.nextInt();
+
+        StringBuilder outputSb = new StringBuilder();
         Solver solver = new Solver();
 
-        for (int t = 0; t < testCases; t++) {
-            do {
-                line = br.readLine();
-            } while (line != null && line.trim().isEmpty());
-            if (line == null) break;
-
-            StringTokenizer st = new StringTokenizer(line);
-            int N = Integer.parseInt(st.nextToken());
-            int M = Integer.parseInt(st.nextToken());
+        for (int t = 0; t < numberOfTestCases; t++) {
+            // N: number of citizens in town (vertices), M: number of pairs/friendships (edges)
+            int N = scanner.nextInt();
+            int M = scanner.nextInt();
 
             ArrayList<int[]> edges = new ArrayList<>(M);
             for (int i = 0; i < M; i++) {
-                line = br.readLine();
-                while (line != null && line.trim().isEmpty()) {
-                    line = br.readLine();
-                }
-                st = new StringTokenizer(line);
-                int A = Integer.parseInt(st.nextToken());
-                int B = Integer.parseInt(st.nextToken());
-                edges.add(new int[]{A, B});
+
+                edges.add(new int[]{scanner.nextInt(), scanner.nextInt()});
             }
 
-            int result;
-            if (M == 0 && N > 0) {
-                result = 1;
-            } else {
-                result = solver.solve(edges);
-            }
+            int result = solver.solve(edges);
 
-            out.append(result).append('\n');
+            outputSb.append(result).append('\n');
         }
 
-        System.out.print(out.toString());
+        System.out.print(outputSb);
     }
 }
 
