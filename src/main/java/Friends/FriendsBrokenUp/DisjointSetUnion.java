@@ -2,10 +2,10 @@ package Friends.FriendsBrokenUp;
 
 import java.util.Arrays;
 
-public class DSU {
+public class DisjointSetUnion {
     private int[] parent;
 
-    public DSU(int size) {
+    public DisjointSetUnion(int size) {
         this.parent = new int[size + 1];
     }
 

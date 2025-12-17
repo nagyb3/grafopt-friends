@@ -1,15 +1,16 @@
 package Friends.FriendsCli;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Scanner;
 
 // https://onlinejudge.org/external/106/10608.pdf
 class Main {
-    static class DSU {
+    public static class DisjointSetUnion {
         private int[] parent;
 
-        public DSU(int size) {
+        public DisjointSetUnion(int size) {
             this.parent = new int[size + 1];
         }
 
@@ -32,6 +33,13 @@ class Main {
                 parent[uSet] = vSet;
             }
         }
+
+        @Override
+        public String toString() {
+            return "DSU{" +
+                    "parent=" + Arrays.toString(parent) +
+                    '}';
+        }
     }
 
     static class Solver {
@@ -51,7 +59,7 @@ class Main {
                 }
             }
 
-            DSU disjointSet = new DSU(maxNumber);
+            DisjointSetUnion disjointSet = new DisjointSetUnion(maxNumber);
 
             for (int elementNum : vertices) {
                 disjointSet.makeSet(elementNum);
@@ -77,7 +85,7 @@ class Main {
         }
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         if (!scanner.hasNextLine()) {

@@ -20,7 +20,7 @@ public class Solver {
             }
         }
 
-        DSU disjointSet = new DSU(maxNumber);
+        DisjointSetUnion disjointSet = new DisjointSetUnion(maxNumber);
 
         for (int elementNum : vertices) {
             disjointSet.makeSet(elementNum);
