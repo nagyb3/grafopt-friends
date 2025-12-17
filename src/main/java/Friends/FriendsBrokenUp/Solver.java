@@ -30,7 +30,7 @@ public class Solver {
             disjointSet.union(edge[0], edge[1]);
         }
 
-        // find the most popular representative in the DSU
+        // assign to each vertix, how many other vertixes is this one the representative of:
         int[] results = new int[maxNumber + 1];
         for (int vertice: vertices) {
             results[disjointSet.find(vertice)]++;

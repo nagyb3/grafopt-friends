@@ -21,7 +21,6 @@ public class DisjointSetUnion {
         return find(parent[v]);
     }
 
-
     public void union(int u, int v) {
         int uSet = find(u);
         int vSet = find(v);
