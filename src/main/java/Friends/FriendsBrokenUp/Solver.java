@@ -14,9 +14,9 @@ public class Solver {
 
         // calculate the biggest number for an edge for the size of the disjoint sets' array
         int maxNumber = 0;
-        for (int elementNum : vertices) {
-            if (elementNum > maxNumber) {
-                maxNumber = elementNum;
+        for (int vertex : vertices) {
+            if (vertex > maxNumber) {
+                maxNumber = vertex;
             }
         }
 
@@ -30,10 +30,10 @@ public class Solver {
             disjointSet.union(edge[0], edge[1]);
         }
 
-        // assign to each vertix, how many other vertixes is this one the representative of:
+        // assign to each vertex, how many other vertices is this one the representative of:
         int[] results = new int[maxNumber + 1];
-        for (int vertice: vertices) {
-            results[disjointSet.find(vertice)]++;
+        for (int vertex: vertices) {
+            results[disjointSet.find(vertex)]++;
         }
 
         int sizeOfLargestFriendGroup = 1;
