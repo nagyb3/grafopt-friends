@@ -8,10 +8,10 @@ import java.util.StringTokenizer;
 
 // https://onlinejudge.org/external/106/10608.pdf
 class Main {
-    static class DisjointSets {
+    static class DSU {
         private int[] parent;
 
-        public DisjointSets(int size) {
+        public DSU(int size) {
             this.parent = new int[size + 1];
         }
 
@@ -45,6 +45,7 @@ class Main {
                 vertices.add(edge[1]);
             }
 
+            // calculate the biggest number for an edge for the size of the disjoint sets' array
             int maxNumber = 0;
             for (int elementNum : vertices) {
                 if (elementNum > maxNumber) {
@@ -52,14 +53,14 @@ class Main {
                 }
             }
 
-            DisjointSets disjointSet = new DisjointSets(maxNumber);
+            DSU disjointSet = new DSU(maxNumber);
 
             for (int elementNum : vertices) {
                 disjointSet.makeSet(elementNum);
             }
 
-            for (int[] element : edges) {
-                disjointSet.union(element[0], element[1]);
+            for (int[] edge : edges) {
+                disjointSet.union(edge[0], edge[1]);
             }
 
             int[] results = new int[maxNumber + 1];
@@ -67,14 +68,14 @@ class Main {
                 results[disjointSet.find(vertice)]++;
             }
 
-            int sizeOfLargeFriendsConnection = 1;
+            int sizeOfLargestFriendGroup = 1;
             for (int i = 0; i < results.length; i++) {
-                if (results[i] > sizeOfLargeFriendsConnection) {
-                    sizeOfLargeFriendsConnection = results[i];
+                if (results[i] > sizeOfLargestFriendGroup) {
+                    sizeOfLargestFriendGroup = results[i];
                 }
             }
 
-            return sizeOfLargeFriendsConnection;
+            return sizeOfLargestFriendGroup;
         }
     }
 
