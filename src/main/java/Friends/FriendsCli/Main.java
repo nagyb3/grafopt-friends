@@ -62,8 +62,8 @@ class Main {
 
             DisjointSetUnion disjointSet = new DisjointSetUnion(maxNumber);
 
-            for (int elementNum : vertices) {
-                disjointSet.makeSet(elementNum);
+            for (int vertex : vertices) {
+                disjointSet.makeSet(vertex);
             }
 
             for (int[] edge : edges) {

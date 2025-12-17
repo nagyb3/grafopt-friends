@@ -22,17 +22,17 @@ public class Solver {
 
         DisjointSetUnion disjointSet = new DisjointSetUnion(maxNumber);
 
-        for (int elementNum : vertices) {
-            disjointSet.makeSet(elementNum);
+        for (int vertex : vertices) {
+            disjointSet.makeSet(vertex);
         }
 
-        for (int[] edge: edges) {
+        for (int[] edge : edges) {
             disjointSet.union(edge[0], edge[1]);
         }
 
         // assign to each vertex, how many other vertices is this one the representative of:
         int[] results = new int[maxNumber + 1];
-        for (int vertex: vertices) {
+        for (int vertex : vertices) {
             results[disjointSet.find(vertex)]++;
         }
 
