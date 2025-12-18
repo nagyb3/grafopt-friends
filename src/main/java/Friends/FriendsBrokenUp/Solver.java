@@ -31,15 +31,15 @@ public class Solver {
         }
 
         // assign to each vertex, how many other vertices is this one the representative of:
-        int[] results = new int[maxNumber + 1];
+        int[] setSizes = new int[maxNumber + 1];
         for (int vertex : vertices) {
-            results[disjointSet.find(vertex)]++;
+            setSizes[disjointSet.find(vertex)]++;
         }
 
         int sizeOfLargestFriendGroup = 1;
-        for (int i = 0; i < results.length; i++) {
-            if (results[i] > sizeOfLargestFriendGroup) {
-                sizeOfLargestFriendGroup = results[i];
+        for (int i = 0; i < setSizes.length; i++) {
+            if (setSizes[i] > sizeOfLargestFriendGroup) {
+                sizeOfLargestFriendGroup = setSizes[i];
             }
         }
 
