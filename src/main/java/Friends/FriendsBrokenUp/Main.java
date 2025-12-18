@@ -13,7 +13,7 @@ public class Main {
 
         int numberOfDatasets = 0;
         int lineCounter = 0;
-        ArrayList<String[]> rawData = new ArrayList<>();
+        ArrayList<int[]> data = new ArrayList<>();
 
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
@@ -21,18 +21,13 @@ public class Main {
                 numberOfDatasets = Integer.parseInt(line);
             } else {
                 String[] splitLine = line.split("\\s+");
-                rawData.add(splitLine);
+                data.add(new int[] {
+                        Integer.parseInt(splitLine[0]), Integer.parseInt(splitLine[1])
+                });
             }
             lineCounter++;
         }
         scanner.close();
-
-        ArrayList<int[]> data = new ArrayList<>();
-        for (String[] line : rawData) {
-            data.add(new int[]{
-                    Integer.parseInt(line[0]), Integer.parseInt(line[1])
-            });
-        }
 
         int start = 0;
         for (int i = 0; i < numberOfDatasets; i++) {
